@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "UTF-8">
+<title>My Portfolio </title>
+<style>
+.main{
+text-align : center;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.table{
+display: table;
+margin: 0 auto;
+}
+
+.loader{
+border: 10px solid #f3f3f3;
+border-top:10px solid #3498db;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+animation: spin 2s linear infinite;
+}
+
+@keyframes spin{
+0% { transform: rotate(0deg);}
+100% { transform: rotate(360deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id = "loading" class="loader"></div>
+
+
+<div class = "main" id = "mainContainer" hidden>
+<img 
+height = "250" width = "250" id = "profileImage" alt="Avatar">
+<h2 id = "fullName" style="font-family:times new roman"></h2>
+<p id = "bio"></p>
+<h5 id = "followersInformation" style="font-family:times new roman"></h5>
+<p>
+Check me on <a id = "githubLink">Github</a> 
+</p>
+
+<p>
+My Projects
+<li><a id = "covid19">COVID19</a></li><br/>
+<li><a id = "ecommerce">E-Commerce</a></li><br/>
+<li><a id = "corona_tracker">Corona_Tracker</a></li><br/>
+<li><a id = "react_lyric_finder">React_Lyric_Finder</a></li><br/>
+<li><a id = "java_covid19">Java_COVID19</a></li>
+</p>
+</div>
+
+
+
+<script>
+fetch("https://api.github.com/users/amshrestha2020")
+.then(response => response.json())
+.then(function(data){
+console.log(data)
+
+let followersCount = data['followers']
+let followersInfo = `I have ${followersCount} followers on Github`
+
+document.getElementById('profileImage').src = data['avatar_url']
+document.getElementById('fullName').textContent = data['name']
+document.getElementById('bio').textContent = data['bio']
+document.getElementById('followersInformation').textContent = followersInfo
+
+document.getElementById('githubLink').href = data['html_url']
+
+document.getElementById('covid19').href = data['repos_url']
+document.getElementById('ecommerce').href = data['repos_url']
+document.getElementById('corona_tracker').href = data['repos_url']
+document.getElementById('react_lyric_finder').href = data['repos_url']
+document.getElementById('java_covid19').href = data['repos_url']
+
+document.getElementById('mainContainer').hidden = false
+document.getElementById('loading').hidden = true
+
+})
+</script>
+</body>
+</html>
