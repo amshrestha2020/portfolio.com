@@ -4,17 +4,13 @@
 <meta charset = "UTF-8">
 <title>My Portfolio </title>
 <style>
-.main{
+
+ .main{
 text-align : center;
 }
 
 img {
   border-radius: 50%;
-}
-
-.table{
-display: table;
-margin: 0 auto;
 }
 
 .loader{
@@ -31,6 +27,12 @@ animation: spin 2s linear infinite;
 100% { transform: rotate(360deg);}
 }
 
+@media screen and (max-width: 500px){
+.column {
+width: 100%;
+}
+}
+
 </style>
 </head>
 
@@ -44,12 +46,11 @@ animation: spin 2s linear infinite;
 height = "250" width = "250" id = "profileImage" alt="Avatar">
 <h2 id = "fullName" style="font-family:times new roman"></h2>
 <p id = "bio"></p>
-<h5 id = "followersInformation" style="font-family:times new roman"></h5>
+<h3 id = "followersInformation" style="font-family:times new roman"></h5>
 <p>
 Check me on <a id = "githubLink">Github</a> 
 </p>
 
-<br>
 <br>
 <p>
 My Projects
@@ -59,9 +60,7 @@ My Projects
 <li><a href = "https://github.com/amshrestha2020/java_covid19">Java_COVID19</a></li>
 </p>
   </br>
-  </br>
 </div>
-
 
 
 <script>
